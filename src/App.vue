@@ -1,13 +1,13 @@
 <template>
   <the-header title="RememberMe"> </the-header>
-  <stored-resources :resources="storedResources"></stored-resources>
+  <the-resources></the-resources>
 </template>
 
 <script>
-import StoredResources from './components/learning-resources/StoredResource.vue';
 import TheHeader from './components/layouts/TheHeader.vue';
+import TheResources from './components/learning-resources/TheResources.vue';
 export default {
-  components: { StoredResources, TheHeader },
+  components: { TheHeader, TheResources },
   data() {
     return {
       storedResources: [
@@ -24,6 +24,11 @@ export default {
           link: 'https://google.org'
         }
       ]
+    };
+  },
+  provide() {
+    return {
+      resources: this.storedResources
     };
   },
   methods: {}
